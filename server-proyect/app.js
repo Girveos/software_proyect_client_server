@@ -4,10 +4,9 @@ const cors = require("cors");
 const { API_VERSION } = require("./constants");
 
 const app = express();
-
 /* Cargar rutas */
 const authRoutes = require("./src/routes/auth");
-const userRoutes = require("./src/routes/user");
+const locationRoutes = require('./src/routes/location');
 
 /* Trabajar con la extensión client-rest */
 app.use(bodyParser.json());
@@ -19,5 +18,7 @@ el backend y el fronten a la vez */
 app.use(cors());
 console.log(`api/${API_VERSION}/`);
 app.use(`/api/${API_VERSION}/auth`, authRoutes);
+app.use('/api/v1/location', locationRoutes);
+
 //app.use(`/api/${API_VERSION}/`, userRoutes);
 module.exports = app;
